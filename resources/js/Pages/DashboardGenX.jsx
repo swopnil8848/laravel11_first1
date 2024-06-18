@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Dashboard3 from './Dashboard3';
+// import { Link, useNavigate } from 'react-router-dom';
+import { Link, Head } from '@inertiajs/react';
+
 
 // import '../../App.css'
 // import LineChart from '../../Line Chart/LineChart';
@@ -17,13 +20,15 @@ import Dashboard3 from './Dashboard3';
 // import Contact from '../Contact/Contact'
 
 
-const DashboardGenX = () => {
+const DashboardGenX = ({prop}) => {
     const divRef = useRef(null);
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const Pie_1ref = useRef(null);
     const Pie_2ref = useRef(null);
     const Pie_3ref = useRef(null);
+
+
 
     // const navigate = useNavigate();
 
@@ -131,12 +136,14 @@ const DashboardGenX = () => {
                 </div>
             </nav>
 
+
             <div className='relative flex h-full'>
 
                 <div className={`container fixed top-[${window.innerHeight}] xl:pl-2 lg:static overflow-x-scroll lg:overflow-auto bottom-0 z-30 flex lg:flex-col justify-between lg:mb-10 lg:w-1/12 `}>
-                    <img onClick={() => navigate('/')} src="./SideNavIcons/Btn.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
+                    <Link href={route('dashboardGenX')}><img src="./SideNavIcons/Btn.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" /></Link>
                     <img src="./SideNavIcons/Btn-1.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
-                    <img onClick={() => navigate('/contact')} src="./SideNavIcons/Btn-2.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
+                    {/* <img src="./SideNavIcons/Btn-2.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" /> */}
+                    <Link href={route('contact')}><img src="./SideNavIcons/Btn-2.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" /></Link>
                     <img src="./SideNavIcons/Btn-3.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
                     <img src="./SideNavIcons/Btn-4.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
                     <img src="./SideNavIcons/Btn-5.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
@@ -150,10 +157,11 @@ const DashboardGenX = () => {
                 <Dashboard3 />
                 {/* <Outlet /> */}
                 {/* <{props}/> */}
-
             </div>
 
+
         </div>
+
     )
 }
 

@@ -23,6 +23,10 @@ Route::get('/dashboardGenX', function () {
     return Inertia::render('DashboardGenX');
 })->middleware(['auth', 'verified'])->name('dashboardGenX');
 
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->middleware(['auth', 'verified'])->name('contact');
+
 // Route::post('/dashboardGenX', function ($name) {
 //     dd($name)
 //     return Inertia::render('DashboardGenX');
@@ -30,7 +34,6 @@ Route::get('/dashboardGenX', function () {
 // ->middleware(['auth', 'verified'])->name('dashboardGenX');
 
 Route::post('/dashboardGenX', [dashboardGenX::class, 'create'])->middleware(['auth', 'verified'])->name('dashboardGenX');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

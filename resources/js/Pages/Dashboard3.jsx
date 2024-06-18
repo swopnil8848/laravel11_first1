@@ -42,7 +42,7 @@ const Dashboard3 = () => {
 
 
     return (
-        <div className='lg:w-11/12 w-full mt-1 lg:mt-8 mb-32 lg:mb-2'>
+        <div className='lg:w-11/12 w-full mx-auto w-full mt-1 lg:mt-8 mb-32 lg:mb-2'>
 
 
             <div className='lg:flex mx-2 lg:my-4'>
