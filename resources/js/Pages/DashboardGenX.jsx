@@ -131,8 +131,6 @@ const DashboardGenX = () => {
                 </div>
             </nav>
 
-
-
             <div className='relative flex h-full'>
 
                 <div className={`container fixed top-[${window.innerHeight}] xl:pl-2 lg:static overflow-x-scroll lg:overflow-auto bottom-0 z-30 flex lg:flex-col justify-between lg:mb-10 lg:w-1/12 `}>
