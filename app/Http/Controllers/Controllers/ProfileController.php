@@ -3,28 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\View\View;
 
-// i used this to practise please feel free to change
-
-
-
-class DashboardGenX extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): View
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
+        return view('profile.edit', [
+            'user' => $request->user(),
         ]);
     }
 
@@ -41,7 +34,7 @@ class DashboardGenX extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -49,7 +42,7 @@ class DashboardGenX extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate([
+        $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
 
@@ -64,20 +57,4 @@ class DashboardGenX extends Controller
 
         return Redirect::to('/');
     }
-
-    /**
-     * Delete the user's account.
-     */
-    public function create(Request $request): RedirectResponse
-    {
-        $user = $request->validate([
-            'name' => ['required'],
-        ]);
-
-        // $user = $request->user();
-
-        dd($user);
-
-    }
-
 }

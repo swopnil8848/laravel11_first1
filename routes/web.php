@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardGenX;
+use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\Controllers\HomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -15,17 +18,21 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard')->middleware(['auth','verified']);
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+// });
 
 Route::get('/dashboardGenX', function () {
     return Inertia::render('DashboardGenX');
 })->middleware(['auth', 'verified'])->name('dashboardGenX');
 
+Route::get('/dashboard', [HomeController::class, 'root'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/contact', function () {
     return Inertia::render('Contact');
-})->middleware(['auth', 'verified'])->name('contact');
+})->middleware(['auth'])->name('contact');
 
 // Route::post('/dashboardGenX', function ($name) {
 //     dd($name)

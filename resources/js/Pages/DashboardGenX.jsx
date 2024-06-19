@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Dashboard3 from './Dashboard3';
 // import { Link, useNavigate } from 'react-router-dom';
-import { Link, Head } from '@inertiajs/react';
+import { Link, Head, usePage } from '@inertiajs/react';
 
 
 // import '../../App.css'
@@ -19,14 +19,19 @@ import { Link, Head } from '@inertiajs/react';
 // import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 // import Contact from '../Contact/Contact'
 
+// import { usePage } from '@inertiajs/inertia-react';
 
-const DashboardGenX = ({prop}) => {
+const DashboardGenX = ({ auth }) => {
+    const { leadsCount, servicesCount, usersCount, rolesCount, recentLeads, recentServices } = usePage().props;
+    console.log("tjisdfosjd ", leadsCount)
     const divRef = useRef(null);
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const Pie_1ref = useRef(null);
     const Pie_2ref = useRef(null);
     const Pie_3ref = useRef(null);
+
+    console.log("this is the auth", auth)
 
 
 
@@ -154,7 +159,7 @@ const DashboardGenX = ({prop}) => {
                     <img src="./SideNavIcons/Btn-10.png" className='cursor-pointer w-fit h-fit my-2 ml-4' alt="" />
                 </div>
 
-                <Dashboard3 />
+                <Dashboard3 auth={auth} />
                 {/* <Outlet /> */}
                 {/* <{props}/> */}
             </div>

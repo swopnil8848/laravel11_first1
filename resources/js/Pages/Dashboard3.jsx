@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import BarChart2 from './Vissulization/Bar Chart/BarChart2'
 // import BarChart2 from '../Vissulization/Bar Chart/BarChart2'
 
-const Dashboard3 = () => {
+const Dashboard3 = ({ auth }) => {
 
     const [clientDiv, setClientDiv] = useState(0)
     const client = useRef(null)
@@ -47,7 +47,7 @@ const Dashboard3 = () => {
 
             <div className='lg:flex mx-2 lg:my-4'>
                 <h1 className='lg:w-1/2 flex flex-col text-white text-xl md:text-3xl lg:text-4xl xl:text-5xl my-auto px-1'>
-                    <h1>Hi Ashbin , here's an</h1>
+                    <h1>Hi {auth.user.name} , here's an</h1>
                     <h1>Overview of Your bussiness</h1>
                 </h1>
                 <div className='lg:w-1/2 w-full lg:pr-8'>
@@ -80,14 +80,14 @@ const Dashboard3 = () => {
                         </div>
                         <div ref={client} className='bg-white md:w-[48%] rounded-3xl py-6 p-4 lg:ml-4 my-2 w-full mx-auto'>
                             <div className='flex justify-between w-full'>
-                                <h5 className='text-xl font-semibold my-auto'>Clients</h5>
+                                <h5 className='text-xl font-semibold my-auto'>Projects</h5>
                                 <button className='flex border border-gray-500 py-1 px-3 rounded-full text-sm'><span className='my-auto'>View All</span> <div className='my-atuo'><img src='./RightBlackArrow.png' /></div></button>
                             </div>
                             <h4 className='text-2xl font-semibold my-3'>1,252</h4>
                             <div className='flex w-full'>
-                                <div style={{ width: clientDiv * clients.leads * 0.01 }} className='h-2 bg-[#000000] rounded-full mx-1'></div>
-                                <div style={{ width: clientDiv * clients.prospects * 0.01 }} className='h-2 bg-[#FF6C4B] rounded-full mx-1'></div>
-                                <div style={{ width: clientDiv * clients.clients * 0.01 }} className='h-2 bg-[#C6F432] rounded-full mx-1'></div>
+                                <div style={{ width: clientDiv * projects.new * 0.01 }} className='h-2 bg-[#000000] rounded-full mx-1'></div>
+                                <div style={{ width: clientDiv * projects.onGoing * 0.01 }} className='h-2 bg-[#FF6C4B] rounded-full mx-1'></div>
+                                <div style={{ width: clientDiv * projects.completed * 0.01 }} className='h-2 bg-[#C6F432] rounded-full mx-1'></div>
                             </div>
                             <div className='flex justify-around mt-2'>
                                 <div className='flex items-center'>
