@@ -18,29 +18,27 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard')->middleware(['auth','verified']);
-
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
-// });
-
 Route::get('/dashboardGenX', function () {
     return Inertia::render('DashboardGenX');
 })->middleware(['auth', 'verified'])->name('dashboardGenX');
+
+Route::get('/card', function () {
+    return Inertia::render('Card');
+})->middleware(['auth', 'verified'])->name('card');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->middleware(['auth', 'verified'])->name('Contact');
+
+Route::get('/contactdetail/{name}', function ($name) {
+    return Inertia::render('ContactDetail');
+})->middleware(['auth', 'verified'])->name('ContactId');
 
 Route::get('/dashboard', [HomeController::class, 'root'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->middleware(['auth'])->name('contact');
-
-// Route::post('/dashboardGenX', function ($name) {
-//     dd($name)
-//     return Inertia::render('DashboardGenX');
-// })
-// ->middleware(['auth', 'verified'])->name('dashboardGenX');
-
-Route::post('/dashboardGenX', [dashboardGenX::class, 'create'])->middleware(['auth', 'verified'])->name('dashboardGenX');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

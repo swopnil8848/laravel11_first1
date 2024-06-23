@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import BarChart2 from './Vissulization/Bar Chart/BarChart2'
 // import BarChart2 from '../Vissulization/Bar Chart/BarChart2'
 
-const Dashboard3 = ({ auth }) => {
+const Dashboard3 = ({ auth, users }) => {
 
     const [clientDiv, setClientDiv] = useState(0)
     const client = useRef(null)
@@ -12,6 +12,7 @@ const Dashboard3 = ({ auth }) => {
 
     const invoiceRef = useRef();
     const barChartref = useRef();
+    const [absolute, setAbsolute] = useState('')
 
 
 
@@ -46,7 +47,7 @@ const Dashboard3 = ({ auth }) => {
 
 
             <div className='lg:flex mx-2 lg:my-4'>
-                <h1 className='lg:w-1/2 flex flex-col text-white text-xl md:text-3xl lg:text-4xl xl:text-5xl my-auto px-1'>
+                <h1 className='lg:w-1/2 flex flex-col text-white text-xl md:text-3xl lg:text-3xl lg:text-center xl:text-5xl my-auto px-1'>
                     <h1>Hi {auth.user.name} , here's an</h1>
                     <h1>Overview of Your bussiness</h1>
                 </h1>
@@ -57,7 +58,7 @@ const Dashboard3 = ({ auth }) => {
                                 <h5 className='text-xl font-semibold my-auto'>Clients</h5>
                                 <button className='flex border border-gray-500 py-1 px-3 rounded-full text-sm'><span className='my-auto'>View All</span> <div className='my-atuo'><img src='./RightBlackArrow.png' /></div></button>
                             </div>
-                            <h4 className='text-2xl font-semibold my-3'>1,252</h4>
+                            <h4 className='text-2xl font-semibold my-3'>{users}</h4>
                             <div className='flex w-full'>
                                 <div style={{ width: clientDiv * projects.new * 0.01 }} className='h-2 bg-[#FF6C4B] rounded-full mx-1'></div>
                                 <div style={{ width: clientDiv * projects.onGoing * 0.01 }} className='h-2 bg-[#FFFFFF] rounded-full mx-1'></div>
@@ -78,9 +79,11 @@ const Dashboard3 = ({ auth }) => {
                                 </div>
                             </div>
                         </div>
-                        <div ref={client} className='bg-white md:w-[48%] rounded-3xl py-6 p-4 lg:ml-4 my-2 w-full mx-auto'>
+                        <div ref={client} onMouseEnter={() => setAbsolute('projects')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'projects' ? 'opacity-80' : ''} cursor-pointer relative bg-white md:w-[48%] rounded-3xl py-6 p-4 lg:ml-4 my-2 w-full mx-auto`}>
+                            {/* <div className={`${absolute === 'projects' ? 'block' : 'hidden'} flex items-center bg-gray-700 opacity-100 w-full h-full z-30 absolute rounded-3xl top-0 left-0`}></div> */}
+                            <div className={`${absolute === 'projects' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-3xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
                             <div className='flex justify-between w-full'>
-                                <h5 className='text-xl font-semibold my-auto'>Projects</h5>
+                                <h5 className='text-xl font-semibold my-auto'>Deals</h5>
                                 <button className='flex border border-gray-500 py-1 px-3 rounded-full text-sm'><span className='my-auto'>View All</span> <div className='my-atuo'><img src='./RightBlackArrow.png' /></div></button>
                             </div>
                             <h4 className='text-2xl font-semibold my-3'>1,252</h4>
@@ -111,7 +114,9 @@ const Dashboard3 = ({ auth }) => {
 
             <div className='lg:flex mx-2 lg:mx-8 mt-2'>
                 <div className='md:flex lg:w-1/2'>
-                    <div className='md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2'>
+                    <div onMouseEnter={() => setAbsolute('newleads')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'newleads' ? 'opacity-80' : ''} cursor-pointer relative md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2`}>
+                        <div className={`${absolute === 'newleads' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-3xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
+
                         <div className='flex justify-between'>
                             <h3 className='text-xl font-semibold'>New Leads</h3>
                             <div className='flex my-auto rounded-full bg-gray-300 p-2'><img src="./Leftarrow.png" alt="" /></div>
@@ -128,9 +133,11 @@ const Dashboard3 = ({ auth }) => {
                             <span>510</span>
                         </div>
                     </div>
-                    <div className='md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2'>
+                    <div onMouseEnter={() => setAbsolute('ongoingprojects')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'ongoingprojects' ? 'opacity-80' : ''} relative md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2`}>
+                        <div className={`${absolute === 'ongoingprojects' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-3xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
+
                         <div className='flex justify-between'>
-                            <h3 className='text-xl font-semibold'>Ongoing Projects</h3>
+                            <h3 className='text-xl font-semibold'>Ongoing Deals</h3>
                             <div className='flex my-auto rounded-full bg-gray-300 p-2'><img src="./Leftarrow.png" alt="" /></div>
                         </div>
                         <div className='flex items-center my-2'>
@@ -147,7 +154,9 @@ const Dashboard3 = ({ auth }) => {
                     </div>
                 </div>
                 <div className='md:flex lg:w-1/2 md:mt-2 lg:mt-0'>
-                    <div className='md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2'>
+                    <div onMouseEnter={() => setAbsolute('totalprofit')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'totalprofit' ? 'opacity-80' : ''} relative md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2`}>
+                        <div className={`${absolute === 'totalprofit' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-3xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
+
                         <div className='flex justify-between'>
                             <h3 className='text-xl font-semibold'>Total Profit</h3>
                             <div className='flex my-auto rounded-full bg-gray-300 p-2'><img src="./Leftarrow.png" alt="" /></div>
@@ -164,7 +173,9 @@ const Dashboard3 = ({ auth }) => {
                             <span>510</span>
                         </div>
                     </div>
-                    <div className='md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2'>
+                    <div onMouseEnter={() => setAbsolute('expenses')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'expenses' ? 'opacity-80' : ''} relative md:w-[48%] w-full mx-auto bg-white rounded-3xl py-7 px-6 my-2`}>
+                        <div className={`${absolute === 'expenses' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-3xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
+
                         <div className='flex justify-between'>
                             <h3 className='text-xl font-semibold'>Expenses</h3>
                             <div className='flex my-auto rounded-full bg-gray-300 p-2'><img src="./Leftarrow.png" alt="" /></div>
@@ -186,7 +197,9 @@ const Dashboard3 = ({ auth }) => {
 
             <div className='lg:flex mx-2 lg:mx-4 mt-2'>
                 <div ref={invoiceRef} className='lg:w-[48%]  lg:ml-4 mt-2'>
-                    <div className='inset-0 py-4 px-2 rounded-3xl bg-gray-700 bg-opacity-35 backdrop-filter backdrop-blur-xl'>
+                    <div onMouseEnter={() => setAbsolute('invoicespaid')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'invoicespaid' ? 'opacity-80' : ''} relative inset-0 py-4 px-2 rounded-3xl bg-gray-700 bg-opacity-35 backdrop-filter backdrop-blur-xl`}>
+                        <div className={`${absolute === 'invoicespaid' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-3xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
+
                         <div className='w-full flex md:px-4 xl:px-8'>
                             <div style={{ width: 67 * invoicesPaid * 0.01 }} className='z-10 relative rounded-full bg-[#C6F432] h-[38px]'>
                                 <div className='z-20 absolute h-[30px] w-[30px] rounded-full top-[4px] right-[4px] bg-white '><span className='text-opacity-80 text-xxs ml-1 font-semibold '>63.4%</span></div>
@@ -215,7 +228,9 @@ const Dashboard3 = ({ auth }) => {
                     </div>
                     <div className='md:flex mt-4'>
                         <div className='flex justify-between md:w-[55%] '>
-                            <div className='bg-[#FF6C4B] w-[48%] rounded-3xl p-2'>
+                            <div onMouseEnter={() => setAbsolute('pendingtask')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'pendingtask' ? 'opacity-80' : ''} relative bg-[#FF6C4B] w-[48%] rounded-3xl p-2`}>
+                                <div className={`${absolute === 'pendingtask' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
+
                                 <div className='flex justify-between'>
                                     <h2 className='text-xl px-3 py-2 font-semibold text-white'><div className='-m-1'>Total</div><div className='-m-1'>pending</div> <div className='-m-1'> Task</div></h2>
                                     <div className='p-2'><img src="./Voice.png" alt="" /></div>
@@ -223,7 +238,8 @@ const Dashboard3 = ({ auth }) => {
                                 <h3 className='text-lg text-white px-2'>Assigned to you</h3>
                                 <h3 className='font-extrabold text-3xl text-white px-2'>05</h3>
                             </div>
-                            <div className='bg-white tex-black w-[48%] rounded-3xl'>
+                            <div onMouseEnter={() => setAbsolute('yourproductivity')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'yourproductivity' ? 'opacity-80' : ''} relative bg-white tex-black w-[48%] rounded-3xl`}>
+                                <div className={`${absolute === 'yourproductivity' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
                                 <div className='flex justify-between mt-1'>
                                     <h2 className='text-xl px-3 py-2 font-semibold'><div className='-m-1'>Your</div><div className='-m-1'>Productivity</div></h2>
                                     <div className='p-2 pt-2'><img src="./Voice2.png" alt="" /></div>
@@ -233,7 +249,8 @@ const Dashboard3 = ({ auth }) => {
                             </div>
 
                         </div>
-                        <div ref={barChartref} className='md:w-[44%] mx-auto ml-3 bg-white rounded-3xl h-auto'>
+                        <div ref={barChartref} onMouseEnter={() => setAbsolute('pulse')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'pulse' ? 'opacity-80' : ''} relative md:w-[44%] mx-auto md:ml-3 bg-white rounded-3xl h-auto`}>
+                            <div className={`${absolute === 'pulse' ? 'block' : 'hidden'} z-50 flex items-center justify-center bg-gray-100 text-2xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
                             <div className='flex justify-between items-center px-4 mt-2'>
                                 <div>
                                     <h4 className='text-2xl font-semibold flex'>Pulse <div className='h-2 w-2 mt-1 ml-2 rounded-full bg-red-800'></div></h4>
@@ -247,8 +264,9 @@ const Dashboard3 = ({ auth }) => {
                         </div>
                     </div>
                 </div>
-                <div className='lg:w-[48%] ml-4'>
-                    <div className='mx-auto rounded-3xl inset-0 bg-gray-700 bg-opacity-35 backdrop-filter backdrop-blur-xl mt-2 p-6 '>
+                <div className='lg:w-[48%] lg:ml-4'>
+                    <div onMouseEnter={() => setAbsolute('mylineup')} onMouseLeave={() => setAbsolute('')} className={`${absolute === 'mylineup' ? 'opacity-80' : ''} relative mx-auto rounded-3xl inset-0 bg-gray-700 bg-opacity-35 backdrop-filter backdrop-blur-xl mt-2 p-6 `}>
+                        <div className={`${absolute === 'mylineup' ? 'block' : 'hidden'} cursor-pointer z-50 flex items-center justify-center bg-gray-100 text-4xl font-bold  w-full h-full z-30 absolute rounded-3xl top-0 left-0`}>Coming Soon..</div>
                         <div className='flex justify-between mt-4'>
                             <h3 className='text-white text-2xl'>My Line Up</h3>
                             <button className='flex rounded-full items-center bg-white px-2 py-1'>

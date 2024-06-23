@@ -1,0 +1,17 @@
+.container {
+  overflow: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* For Firefox: hide scrollbars */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
