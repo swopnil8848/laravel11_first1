@@ -7,9 +7,11 @@ import { Link } from '@inertiajs/react'
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 
-const Contact = ({ auth }) => {
+const Contact = ({ auth,data,services }) => {
 
-  console.log(auth);
+  console.log(data.data)
+
+
 
   const getCurrentTime = () => {
     const now = new Date();
@@ -27,7 +29,7 @@ const Contact = ({ auth }) => {
   const [time, setTime] = useState(getCurrentTime())
   const [date, setDate] = useState(getCurrentDate())
 
-  console.log("this is teh dummy data", dummyData)
+  //console.log("this is teh dummy data", dummyData)
   return (
 
     <div className='min-h-screen bg-cover bg-no-repeat' style={{ backgroundImage: "url('/Wallpaper.png')" }}>
@@ -63,30 +65,31 @@ const Contact = ({ auth }) => {
             </style>
             <div className='borber border-black w-full'>
               <div className='md:px-8 px-4 py-2 md:text-lg text-sm text-gray-800 font-semibold'>Name</div>
-              {dummyData.map((obj, count) => (
-                <Link key={count} href={route('ContactId', { name: obj.name })} >
+              {data.data.map((obj, count) => (
+                <>
+                <Link key={count} href={route('contact.show', { id:obj.id })} >
                   <div className='border-b border-black py-3 font-semibold text-gray-800 text-xs md:text-md md:px-6 px-2'>
                     <div className='flex h-[34px]'>
                       <div className='mr-2 flex items-center'><img src="./BlackGirl.png" alt="" /></div>
-                      <div>{obj.name}</div>
+                      <div>{obj.first_name+" "+obj.last_name}</div>
                     </div>
                   </div>
                 </Link>
+
+                <div className='border-b border-black py-3 font-semibold text-gray-800 md:px-6'>
+                  <div className='flex h-[34px]'>{obj.office_number}</div>
+                </div>
+                </>
               ))}
             </div>
 
             <div className='borber border-black w-full hidden lg:block'>
               <div className='flex py-2 px-8 md:text-lg text-gray-800 font-semibold'><span className='mr-1'>Contact</span> <span> Number</span></div>
-              {dummyData.map((obj) => (
-                <div className='border-b border-black py-3 font-semibold text-gray-800 md:px-6'>
-                  <div className='flex h-[34px]'>{obj.contactNumber}</div>
-                </div>
-              ))}
             </div>
 
             <div className='borber border-black w-full hidden md:block'>
               <div className='px-8 py-2 md:text-lg text-gray-800 font-semibold'>Email</div>
-              {dummyData.map((obj) => (
+              {data.data.map((obj) => (
                 <div className='border-b border-black py-3 font-semibold text-gray-800 md:px-6'>
                   <div className='flex h-[34px]'>{obj.email}</div>
                 </div>
@@ -104,9 +107,9 @@ const Contact = ({ auth }) => {
 
             <div className='borber border-black w-full hidden xl:block'>
               <div className='px-8 py-2 flex md:text-lg text-gray-800 font-semibold'><span className='mr-1'>Adden</span> <span> On</span></div>
-              {dummyData.map((obj) => (
+              {data.data.map((obj) => (
                 <div className='border-b border-black py-3 font-semibold text-gray-800 px-6'>
-                  <div className='flex h-[34px]'>{obj.addedOn}</div>
+                  <div className='flex h-[34px]'>{obj.created_at}</div>
                 </div>
               ))}
             </div>

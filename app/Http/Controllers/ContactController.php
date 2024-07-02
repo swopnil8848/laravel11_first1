@@ -11,8 +11,9 @@ use App\Models\EmailLog;
 use App\Models\Notes;
 use App\Models\task_table;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
-class LeadsController extends Controller
+class ContactController extends Controller
 {
     public function index()
 {
@@ -20,23 +21,18 @@ class LeadsController extends Controller
         // Get the authenticated user
         $user = Auth::user();
 
-        // Check if the user is an admin or superadmin
-        if ($user->role === 'admin' || $user->role === 'superadmin') {
-            // Fetch all leads with their associated services and user details
             $data = LeadsData::with(['services', 'user'])->paginate(10);
-        } else {
-            // Fetch leads associated with the authenticated user
-            $data = LeadsData::where('user_id', $user->id)->with(['services', 'user'])->paginate(10);
-        }
-
         // Fetch all services
         $services = Service::all();
 
         // Return the view with the fetched data
-        return view('leads.index', compact('data', 'services'));
+         return Inertia::render('Contact', [
+            'data' => $data,
+            'services' => $services,
+        ]);
     } catch (\Exception $e) {
         // Return the view with the error message
-        return view('leads.index')->with('error', $e->getMessage());
+        echo $e;
     }
 }
 
@@ -61,18 +57,19 @@ class LeadsController extends Controller
     public function show($id)
     {
         // only allow viewing of leads that belong to the authenticated user but if the user is admin or superadmin allow it
-        if(auth()->user()->role=="admin" || auth()->user()->role=="superadmin"){
-            $lead = LeadsData::findOrFail($id);
-        }
-        else {
-            $lead = Auth::user()->leads()->findOrFail($id);
-        }
+        $lead = LeadsData::findOrFail($id);
         $task=task_table::where('leads_id',$id)->get();
         $logs = EmailLog::where('leads_id', $id)->get();
         $notes=Notes::where('leads_id',$id)->get();
         $deals =Deals::where('leads_id',$id)->get();
 
-        return view('leads.show', compact('lead', 'logs','task','notes','deals'));
+         return Inertia::render('ContactDetail', [
+            'lead' => $lead,
+            'logs' => $logs,
+            'task'=>$task,
+            'notes'=>$notes,
+            'deals'=>$deals
+        ]);
     }
 
     public function edit($id)
@@ -122,3 +119,4 @@ class LeadsController extends Controller
         return redirect()->route('leads.index')->with('message', 'Lead deleted successfully');
     }
 }
+

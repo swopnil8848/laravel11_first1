@@ -11,6 +11,7 @@ use App\Models\EmailLog;
 use App\Models\Notes;
 use App\Models\task_table;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class LeadsController extends Controller
 {
@@ -33,7 +34,10 @@ class LeadsController extends Controller
         $services = Service::all();
 
         // Return the view with the fetched data
-        return view('leads.index', compact('data', 'services'));
+         return Inertia::render('Contact', [
+            'data' => $data,
+            'services' => $services,
+        ]);
     } catch (\Exception $e) {
         // Return the view with the error message
         return view('leads.index')->with('error', $e->getMessage());

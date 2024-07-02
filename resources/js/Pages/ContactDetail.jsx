@@ -5,7 +5,7 @@ import '../App.css'
 import RecentActivity from './RecentActivity'
 import { useScroll } from 'framer-motion'
 
-const ContactDetail = () => {
+const ContactDetail = ({lead,logs,task,notes,deals}) => {
     const getCurrentTime = () => {
         const now = new Date();
         return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
@@ -87,7 +87,7 @@ const ContactDetail = () => {
     useEffect(() => {
 
         setInvoicesPaid(invoiceRef?.current?.offsetWidth);
-        console.log(invoicesPaid, "invoices paid width")
+//        console.log(invoicesPaid, "invoices paid width")
 
     }, [])
 
@@ -101,6 +101,9 @@ const ContactDetail = () => {
 
     const [time, setTime] = useState(getCurrentTime())
     const [date, setDate] = useState(getCurrentDate())
+
+    console.dir(lead)
+
 
     return (
         <div className='min-h-screen bg-cover bg-no-repeat' style={{ backgroundImage: "url('/Wallpaper.png')" }}>\
@@ -124,7 +127,7 @@ const ContactDetail = () => {
                                 <div className='md:flex lg:block mx-auto'>
                                     <div>
                                         <div className='flex justify-center mx-auto'><img src="/BlackGirlBig.png" alt="" /></div>
-                                        <h1 className='text-center text-2xl font-semibold'>Bishal Alwala</h1>
+                                        <h1 className='text-center text-2xl font-semibold'>{lead.first_name+" "+lead.last_name}</h1>
                                     </div>
                                     <div className='bg-[#C6F432] md:w-[400px] md:ml-6 lg:ml-0 min-w-[280px] lg:w-fit rounded-3xl py-2'>
                                         <div className='flex justify-between mx-2 xl:mx-4'>
@@ -147,7 +150,7 @@ const ContactDetail = () => {
                                             </div>
                                             <div className='my-1'>
                                                 <span>Email: </span>
-                                                <span>demo@gmail.com</span>
+                                                <span>{lead.work_email}</span>
                                             </div>
                                             <div className='my-1'>
                                                 <span>Status: </span>

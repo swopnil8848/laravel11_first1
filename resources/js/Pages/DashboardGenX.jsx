@@ -109,7 +109,7 @@ const DashboardGenX = ({ auth }) => {
             // setContent(<Dashboard3 auth={auth} />);
             content = <Dashboard3 auth={auth} />
             console.log('this is inside the if else statement', content)
-        } else if (endpoint === '/contact') {
+        } else if (endpoint === '/contact.index') {
             // setContent(<Contact />)
             content = <Contact />
             console.log('this is inside the if else statement', content)

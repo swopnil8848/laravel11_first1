@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardGenX;
 use App\Http\Controllers\HomeController;
@@ -26,19 +28,21 @@ Route::get('/card', function () {
     return Inertia::render('Card');
 })->middleware(['auth', 'verified'])->name('card');
 
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-})->middleware(['auth', 'verified'])->name('Contact');
+//Route::get('/contact', function () {
+    //return Inertia::render('Contact');
+//})->middleware(['auth', 'verified'])->name('Contact');
 
-Route::get('/contactdetail/{name}', function ($name) {
-    return Inertia::render('ContactDetail');
-})->middleware(['auth', 'verified'])->name('ContactId');
+
+
 
 Route::get('/dashboard', [HomeController::class, 'root'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-})->middleware(['auth'])->name('contact');
+//Route::get('/contact', function () {
+    //return Inertia::render('Contact');
+//})->middleware(['auth'])->name('contact');
+
+
+Route::resource('contact', ContactController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

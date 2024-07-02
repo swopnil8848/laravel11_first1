@@ -13,7 +13,7 @@ const RecentActivity = ({ i, heading, image, time, body, progress, range, target
 
     const scale = useTransform(progress, range, [1, target])
 
-    console.log(scale)
+   // console.log(scale)
 
     return (
         // <div ref={ref} style={{ position: 'sticky', top: `${i * 30}px` }} className={`flex sticky items-center justify-center  rounded-2xl shadow-lg shadow-[0_4px_8px_rgba(0,0,0,0.1),0_-4px_8px_rgba(0,0,0,0.1),4px_0_8px_rgba(0,0,0,0.1),-4px_0_8px_rgba(0,0,0,0.1)]`}>
