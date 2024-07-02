@@ -120,68 +120,71 @@ const ContactDetail = () => {
                             <h2 className='font-semibold text-[#26292D]'>Back</h2>
                         </div>
                         <div className='flex flex-col lg:mt-12 xl:mx-12 shadow-lg p-8 px-6 rounded-3xl'>
-                            <div>
-                                <div className='flex justify-center mx-auto'><img src="/BlackGirlBig.png" alt="" /></div>
-                                <h1 className='text-center text-2xl font-semibold'>Bishal Alwala</h1>
-                                <div className='bg-[#C6F432]  rounded-3xl py-2'>
-                                    <div className='flex justify-between mx-2 xl:mx-4'>
-                                        <div className='flex bg-[#00000054] w-fit rounded-full p-1 px-3'>
-                                            <div className='my-auto'><img src="/Andrew.png" alt="" /></div>
-                                            <div className='text-white w-fit ml-2'>
-                                                <div className='text-xs'>added by</div>
-                                                <div className='font-semibold text-xs'>Andrew Tate</div>
+                            <div className='flex w-full'>
+                                <div className='md:flex lg:block mx-auto'>
+                                    <div>
+                                        <div className='flex justify-center mx-auto'><img src="/BlackGirlBig.png" alt="" /></div>
+                                        <h1 className='text-center text-2xl font-semibold'>Bishal Alwala</h1>
+                                    </div>
+                                    <div className='bg-[#C6F432] md:w-[400px] md:ml-6 lg:ml-0 min-w-[280px] lg:w-fit rounded-3xl py-2'>
+                                        <div className='flex justify-between mx-2 xl:mx-4'>
+                                            <div className='flex bg-[#00000054] w-fit rounded-full p-1 px-3'>
+                                                <div className='my-auto'><img src="/Andrew.png" alt="" /></div>
+                                                <div className='text-white w-fit ml-2'>
+                                                    <div className='text-xs'>added by</div>
+                                                    <div className='font-semibold text-xs'>Andrew Tate</div>
+                                                </div>
+                                            </div>
+                                            <div className='my-auto flex'>
+                                                <button className='mr-2 xl:mr-4'><img src="/note.png" alt="" className='bg-white p-2 rounded-full' /></button>
+                                                <button className=''><img src="/TripleDot.png" alt="" className='bg-white p-2 rounded-full' /></button>
                                             </div>
                                         </div>
-                                        <div className='my-auto flex'>
-                                            <button className='mr-2 xl:mr-4'><img src="/note.png" alt="" className='bg-white p-2 rounded-full' /></button>
-                                            <button className=''><img src="/TripleDot.png" alt="" className='bg-white p-2 rounded-full' /></button>
-                                        </div>
-                                    </div>
-                                    <div className='font-semibold mt-4 mx-4'>
-                                        <div className='my-1'>
-                                            <span>Contact : </span>
-                                            <span>0422 8456 7219 </span>
-                                        </div>
-                                        <div className='my-1'>
-                                            <span>Email: </span>
-                                            <span>demo@gmail.com</span>
-                                        </div>
-                                        <div className='my-1'>
-                                            <span>Status: </span>
-                                            <span className='bg-gray-600 text-white py-1 px-2 rounded-lg'>New Lead </span>
-                                        </div>
-                                        <div className='my-1'>
-                                            <span>Created On: </span>
-                                            <span>May 27,2024 </span>
+                                        <div className='font-semibold mt-4 mx-4'>
+                                            <div className='my-1'>
+                                                <span>Contact : </span>
+                                                <span>0422 8456 7219 </span>
+                                            </div>
+                                            <div className='my-1'>
+                                                <span>Email: </span>
+                                                <span>demo@gmail.com</span>
+                                            </div>
+                                            <div className='my-1'>
+                                                <span>Status: </span>
+                                                <span className='bg-gray-600 text-white py-1 px-2 rounded-lg'>New Lead </span>
+                                            </div>
+                                            <div className='my-1'>
+                                                <span>Created On: </span>
+                                                <span>May 27,2024 </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <div className='flex justify-between p-2 bg-black rounded-full mt-6'>
+                            <div className='md:flex justify-around lg:block w-full'>
+                                <div className='flex justify-between items-center p-2 bg-black rounded-full mt-6 md:w-[30%] lg:w-full'>
                                     <div className='flex'>
                                         <div><img src="/MailBlack.png" alt="" className='bg-white p-3 rounded-full' /></div>
-                                        <h5 className='text-white my-auto font-semibold ml-4 text-lg'>Emails</h5>
+                                        <h5 className='text-white my-auto font-semibold ml-4 lg:text-lg'>Emails</h5>
                                     </div>
                                     <div className='bg-white h-7 w-7 mt-1 mr-1 rounded-full text-center flex items-center justify-center'>1</div>
                                 </div>
-                                <div className='flex justify-between p-2 bg-black rounded-full mt-6'>
+                                <div className='flex justify-between items-center p-2 bg-black rounded-full mt-6 md:w-[30%] lg:w-full'>
                                     <div className='flex'>
                                         <div><img src="/MailBlack.png" alt="" className='bg-white p-3 rounded-full' /></div>
-                                        <h5 className='text-white my-auto font-semibold ml-4 text-lg'>SMS</h5>
+                                        <h5 className='text-white my-auto font-semibold ml-4 lg:text-lg'>SMS</h5>
                                     </div>
                                     <div className='bg-white h-7 w-7 mt-1 mr-1 rounded-full text-center flex items-center justify-center'>1</div>
                                 </div>
-                                <div className='flex justify-between p-2 bg-black rounded-full mt-6'>
+                                <div className='flex justify-between items-center p-2 bg-black rounded-full mt-6 md:w-[30%] lg:w-full'>
                                     <div className='flex'>
                                         <div><img src="/MailBlack.png" alt="" className='bg-white p-3 rounded-full' /></div>
-                                        <h5 className='text-white my-auto font-semibold ml-4 text-lg'>Linked Platform</h5>
+                                        <h5 className='text-white font-semibold ml-4 lg:text-lg'>Linked Platform</h5>
                                     </div>
                                     <div className='bg-white h-7 w-7 mt-1 mr-1 rounded-full text-center flex items-center justify-center'>1</div>
                                 </div>
                             </div>
-
 
                         </div>
                     </div>
@@ -241,20 +244,20 @@ const ContactDetail = () => {
                             <div className='lg:w-2/3 h-auto max-h-[400px] mb-4 relative'>
                                 <h5 className='text-white text-lg font-semibold mx-4 mt-4 my-2'>Recent Activity</h5>
                                 <div className='h-[320px] overflow-y-auto scrollbar-hidden rounded-[44px]' >
-                                    <style>
-                                        {`
-                                                .scrollbar-hidden::-webkit-scrollbar-track {
-                                                    background: transparent;
-                                                }
-                                                .scrollbar-hidden::-webkit-scrollbar {
-                                                    width: 10px;
-                                                }
-                                                .scrollbar-hidden::-webkit-scrollbar-thumb {
-                                                    background-color: #4A5568;
-                                                    border-radius: 3px;
-                                                }
-                                            `}
-                                    </style>
+                                        <style>
+                                            {`
+                                                    .scrollbar-hidden::-webkit-scrollbar-track {
+                                                        background: transparent;
+                                                    }
+                                                    .scrollbar-hidden::-webkit-scrollbar {
+                                                        width: 10px;
+                                                    }
+                                                    .scrollbar-hidden::-webkit-scrollbar-thumb {
+                                                        background-color: #4A5568;
+                                                        border-radius: 3px;
+                                                    }
+                                                `}
+                                        </style>
                                     {
                                         recentActivity.map((project, i) => {
                                             const targetScale = 1 - ((recentActivity.length - i) * 0.01);

@@ -39,13 +39,28 @@ const Contact = ({ auth }) => {
 
         <SideNav />
 
-        <div className='bg-white mb-4 rounded-3xl  xl:mr-8 h-screen lg:h-auto overflow-y-scroll w-full lg:w-11/12 container'>
+        <div className='bg-white mb-4 rounded-3xl  xl:mr-8 h-screen lg:h-auto w-full lg:w-11/12'>
+
           <div className='flex justify-between mx-8 my-8'>
             <div className='text-gray-600'><span className='font-bold text-lg '>Contacts </span><span>({dummyData.length})</span></div>
             <div className='text-gray-600 flex items-center '><span className='font-bold text-lg mr-2 '>Filer</span><span><img src="./Filter.png" alt="" /></span></div>
           </div>
 
-          <div className='flex justify-between lg:text-sm xl:text-md mx-1 overflow-hidden '>
+          <div className='flex justify-between  max-h-screen h-full overflow-y-auto scrollbar-hidden lg:text-sm xl:text-md mx-1 overflow-hidden '>
+            <style>
+              {`
+                .scrollbar-hidden::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .scrollbar-hidden::-webkit-scrollbar {
+                    width: 10px;
+                }
+                .scrollbar-hidden::-webkit-scrollbar-thumb {
+                    background-color: #4A5568;
+                    border-radius: 3px;
+                }
+              `}
+            </style>
             <div className='borber border-black w-full'>
               <div className='md:px-8 px-4 py-2 md:text-lg text-sm text-gray-800 font-semibold'>Name</div>
               {dummyData.map((obj, count) => (
