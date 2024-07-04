@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import BarChart2 from './Vissulization/Bar Chart/BarChart2'
 // import BarChart2 from '../Vissulization/Bar Chart/BarChart2'
 
-const Dashboard3 = ({ auth, users }) => {
+const Dashboard3 = ({ auth, users,deals,leadsCount }) => {
 
     const [clientDiv, setClientDiv] = useState(0)
     const client = useRef(null)
@@ -40,6 +40,7 @@ const Dashboard3 = ({ auth, users }) => {
         prospects: 50,
         clients: 20
     }
+    console.log('on going deals '+deals);
 
 
     return (
@@ -86,7 +87,7 @@ const Dashboard3 = ({ auth, users }) => {
                                 <h5 className='text-xl font-semibold my-auto'>Deals</h5>
                                 <button className='flex border border-gray-500 py-1 px-3 rounded-full text-sm'><span className='my-auto'>View All</span> <div className='my-atuo'><img src='./RightBlackArrow.png' /></div></button>
                             </div>
-                            <h4 className='text-2xl font-semibold my-3'>1,252</h4>
+                            <h4 className='text-2xl font-semibold my-3'>{deals}</h4>
                             <div className='flex w-full'>
                                 <div style={{ width: clientDiv * projects.new * 0.01 }} className='h-2 bg-[#000000] rounded-full mx-1'></div>
                                 <div style={{ width: clientDiv * projects.onGoing * 0.01 }} className='h-2 bg-[#FF6C4B] rounded-full mx-1'></div>
@@ -122,7 +123,7 @@ const Dashboard3 = ({ auth, users }) => {
                             <div className='flex my-auto rounded-full bg-gray-300 p-2'><img src="./Leftarrow.png" alt="" /></div>
                         </div>
                         <div className='flex items-center my-2'>
-                            <h3 className='text-2xl font-semibold mx-2'>630</h3>
+                            <h3 className='text-2xl font-semibold mx-2'>{leadsCount}</h3>
                             <div className='bg-[#A9E89F] w-fit px-1 flex items-center rounded-full'>
                                 <div className='mx-1 '><img src="greenInc.png" alt="" /></div>
                                 <div>20%</div>
@@ -141,7 +142,7 @@ const Dashboard3 = ({ auth, users }) => {
                             <div className='flex my-auto rounded-full bg-gray-300 p-2'><img src="./Leftarrow.png" alt="" /></div>
                         </div>
                         <div className='flex items-center my-2'>
-                            <h3 className='text-2xl font-semibold mx-2'>25</h3>
+                            <h3 className='text-2xl font-semibold mx-2'>N/A</h3>
                             <div className='bg-[#A9E89F] w-fit px-1 flex items-center rounded-full'>
                                 <div className='mx-1 '><img src="greenInc.png" alt="" /></div>
                                 <div>20%</div>

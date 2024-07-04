@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardGenX;
 use App\Http\Controllers\HomeController;
@@ -35,14 +36,14 @@ Route::get('/card', function () {
 
 
 
-Route::get('/dashboard', [HomeController::class, 'root'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'root'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //Route::get('/contact', function () {
     //return Inertia::render('Contact');
 //})->middleware(['auth'])->name('contact');
 
 
-Route::resource('contact', ContactController::class);
+Route::resource('contact', ContactController::class)->middleware(['auth','verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

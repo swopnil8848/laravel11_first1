@@ -7,7 +7,7 @@ import SideNav from './Nav/SideNav';
 
 
 const DashboardGenX = ({ auth }) => {
-    const { leadsCount, servicesCount, usersCount, rolesCount, recentLeads, recentServices } = usePage().props;
+    const { leadsCount, servicesCount, usersCount, rolesCount, recentLeads, recentServices,deals} = usePage().props;
 
     console.log("tjisdfosjd ", leadsCount, servicesCount, usersCount, rolesCount, recentLeads, recentServices)
     const currentUrl = window.location.href;
@@ -109,7 +109,7 @@ const DashboardGenX = ({ auth }) => {
             // setContent(<Dashboard3 auth={auth} />);
             content = <Dashboard3 auth={auth} />
             console.log('this is inside the if else statement', content)
-        } else if (endpoint === '/contact.index') {
+        } else if (endpoint === '/contact') {
             // setContent(<Contact />)
             content = <Contact />
             console.log('this is inside the if else statement', content)
@@ -129,7 +129,7 @@ const DashboardGenX = ({ auth }) => {
                 <SideNav />
 
                 {/* {content} */}
-                <Dashboard3 auth={auth} users={usersCount} />
+                <Dashboard3 auth={auth} deals={deals} users={usersCount} leadsCount={leadsCount} />
             </div>
 
 
