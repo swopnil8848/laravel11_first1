@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import dummyData from './dummyData'
 import Nav from './Nav/Nav'
 import SideNav from './Nav/SideNav'
-import { Link } from '@inertiajs/react'
+import { Head, Link } from '@inertiajs/react'
 // import '../../App.css'
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Y } from 'vega-lite/build/src/channel'
@@ -35,7 +35,7 @@ const Contact = ({ auth, data, services }) => {
   return (
 
     <div className='min-h-screen bg-cover bg-no-repeat' style={{ backgroundImage: "url('/Wallpaper.png')" }}>
-      <head title='Dashboard' />
+      <Head title='Contact' />
 
       <Nav time={time} date={date} />
 
@@ -155,17 +155,19 @@ const Contact = ({ auth, data, services }) => {
                   </tr>
                 </thead>
                 <tbody className='p-8 w-full'>
-                  {dummyData.map((item) => (
+                  {data.data.map((item) => (
                     <tr key={item.id} className='rounded-[44px] border-b border-black px-4'>
-                      <td className='h-12 px-2'>{item.name}</td>
-                      <td className='h-12 px-2 hidden md:table-cell'>{item.contactNumber}</td>
-                      <td className='h-12 px-2 hidden md:table-cell'>{item.email}</td>
-                      <td className='h-12 px-2'>{item.stage}</td>
-                      <td className='h-12 px-2 hidden lg:table-cell'>{item.addedOn}</td>
-                      <td className='h-12 px-2 hidden lg:table-cell'>{item.addedBy}</td>
+                      <td className='h-12 px-2'>{item.first_name+" "+item.last_name}</td>
+                      <td className='h-12 px-2 hidden md:table-cell'>{item.office_number}</td>
+                      <td className='h-12 px-2 hidden md:table-cell'>{item.work_email}</td>
+                      <td className='h-12 px-2'>{item.importance}</td>
+                      <td className='h-12 px-2 hidden lg:table-cell'>{item.created_at}</td>
+                      <td className='h-12 px-2 hidden lg:table-cell'>{item.user.name}</td>
                       <td className='h-12 px-2'>
                         <div className='flex justify-between py-3 font-semibold text-gray-800 px-2 md:px-6'>
+                  <Link key={item.id} href={route('contact.show', { id: item.id })} >
                           <div className='h-[34px] md:mx-3 mx-2 flex items-center my-auto'><img src="./eye 1.png" className='' alt="" />   </div>
+                          </Link>
                           <div className='h-[34px] md:mx-3 mx-2 flex items-center my-auto'><img src="./note.png" className='' alt="" />   </div>
                           <div className='h-[34px] md:mx-3 mx-2 flex items-center my-auto'><img src="./TripleDot.png" className='' alt="" />   </div>
                         </div>

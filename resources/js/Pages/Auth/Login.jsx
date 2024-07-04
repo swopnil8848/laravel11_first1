@@ -33,6 +33,10 @@ export default function Login({ status, canResetPassword }) {
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
             <form onSubmit={submit}>
+                                        <div class="text-center mt-2">
+                            <h3 className='text-primary'>Welcome Back !</h3>
+                            <p class="text-muted">Sign in to continue to Fagoon-CRM.</p>
+                        </div>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
